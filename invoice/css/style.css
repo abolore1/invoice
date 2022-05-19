@@ -1,0 +1,39 @@
+body{
+  scroll-behavior: smooth;
+  background-color: #f7f7f7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 30vh;
+  font-family: 'Lato',sans-serif;
+}
+
+.child{
+  display: flex;
+  flex-direction: row;
+}
+
+.total-con {
+  display: flex;
+  margin-left: 250px;
+  background-color: #fff;
+  width: 15%;
+  height: 50px;
+  padding:50px;
+  padding-top:10px;
+  margin-bottom: 20px;
+}
+
+.remove {
+   margin-top: 40px;
+}
+
+.add{
+  width:80px;
+  margin-right: 505px;
+}
+
+label{
+  font-size: 22px;
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <title>Document</title>
+  
+</head>
+<body>
+  <h1 style="padding: 50px;">Invoice</h1>
+  <span class="total-con mt-3"> <h2> Total: </h2><h2 class="total"></h2></span>
+  <div class="parent mr-5">
+      <div class="child form-group">
+        <span>
+            <label >Item</label>
+            <input type="text"  class="item form-control input-lg" >
+        </span>  
+        <span style="margin-left: 4px;">
+            <label>Amount</label> 
+            <input type="number" class="amount input-sm form-control" > 
+            
+        </span> <span style=" margin-top: 45px;">|</span>
+        <span><button class="remove btn btn-danger" >Remove</button> </span>
+      </div> 
+  </div>
+  <button  class="add btn btn-success">Add</button>
+
+  <script src="./jquery-1.8.3.js"></script>
+  <script>
+
+  $(document).ready(()=> {
+    $(".item").focus()
+    $('.add').click(function() {
+
+      let str_builder = 0;
+      let input_item = $('.item');
+      let input_amount = $('.amount');
+      // alert(input_amount)
+      const lAmount = localStorage.setItem('amount',input_amount)
+      const lItem = localStorage.getItem('amount')
+      
+		for(let i = 0; input_item[i]; ++i){
+			  if(input_item[i].value != ""){
+				  str_builder+=parseInt(input_amount[i].value);		
+			  }
+		}
+       
+         $('.total').text(str_builder)
+         // cloning items
+         $('.parent').append($('.child:last').clone())
+         //Emptying the last added items values
+         $(".item:last").val('').focus()
+         $(".amount:last").val('')
+        
+      });
+      
+      //Removing a single items
+      $('.remove').live('click',function() {
+       $(this).parents('div.child').remove();
+        // $(this).remove();
+        str_builder = 0;
+
+		for(let i = 0; i< $('.amount').length; ++i){
+       let input_amount = $('.amount')[i].value
+			  if(input_amount != ''){
+				  str_builder +=parseInt(input_amount)
+          
+			  }
+		}
+        $('.total').text(str_builder)
+  });
+  
+});
+
+  </script>
+</body>
+</html> 
+
